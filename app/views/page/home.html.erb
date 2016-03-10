@@ -1,0 +1,34 @@
+<!-- <h1>HOME Page</h1> -->
+
+<div class="container">
+
+      <!-- The justified navigation menu is meant for single line per list item.
+           Multiple lines will require custom code not provided by Bootstrap. -->
+      <div class="masthead">
+        <!-- <h3 class="text-muted">Computer Solutions</h3> -->
+        <nav>
+          <ul class="nav nav-justified">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+ </div>
+
+	<script type="text/ng-template" id="about.html">
+		<%= render 'about' %>
+	</script>
+	<script type="text/ng-template" id="contact.html">
+		<%= render 'contact' %>
+	</script>
+
+	 <div ng-controller="MainCtrl">
+       <div ng-view>
+         
+       </div>
+     </div>
+
+    <p>This is the home page</p>
+	<%#= link_to "Home", root_path %>
+	<%#= link_to "About",  page_about_path %>
+	<%#= link_to "Contact", page_contact_path %>
