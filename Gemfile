@@ -17,6 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 
 # Add AngulatJs to project:
 gem 'angularjs-rails'
+# To call the templates as regular on angular
+gem 'angular-rails-templates'
 # For users'login
  gem 'devise'
 # Use jquery as the JavaScript library

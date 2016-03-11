@@ -1,10 +1,6 @@
-<h1>Cart#index</h1>
-<p>Find me in app/views/cart/index.html.erb</p>
 
-
-<%#=link_to "Empty cart", @cart, method: :delete, data: { confirm: 'Are you sure?' }%>
 <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="cart/destroy">Empty Cart</a>
-<ul>
+
 
 	<table>
 	  <thead>
@@ -16,16 +12,25 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	   <tr>
+	   
+	   <% total=0 %>
+	   <ul>
       	<%@cart.each do |id, amount|%>
 			<%@product=Product.find_by_id(id)%>
 			<%@price=@product.price %>
+		<tr>
 		<li class="product_list">
 			<td><%= link_to @product.title,@product%></td>
 			<td><%= amount %></td>
-			<td><%= number_to_currency(@price) %></td>
+			<td><%= number_to_currency(@price, :unit=>'$') %></td>
 			<td><a href='/cart/<%=id%>/remove'>Remove this item</a></td>
+			<% total+=(@product.price*amount) %>
 		</li>
+		</tr>
 	<% end %>
-</ul>
+	</ul>
+	
+	</tbody>
+</table>
+<p>Total amount: <%=number_to_currency(total, :unit=>'$')%></p>
 

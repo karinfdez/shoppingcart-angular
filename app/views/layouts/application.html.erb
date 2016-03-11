@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="pages">
+<html >
 <head>
   <title>Shocart</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <%#= stylesheet_link_tag "stylesheets/boostrap.min.css" %>
 </head>
-<body>
+<body ng-app="pages">
 	<%if user_signed_in?%>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete %>
 	<% else %>
@@ -20,11 +20,5 @@
     <p class="alert"><%= alert %></p>
 
 	<%= yield %>
-	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")">\x3C/script>')</script> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script> -->
-   <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script> -->
-    <!-- <script src="script.js"></script> -->
-
 </body>
 </html>

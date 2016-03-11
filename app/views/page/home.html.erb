@@ -11,22 +11,17 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#products">Shop</a></li>
           </ul>
         </nav>
  </div>
+	<!-- This way rails identify the template that is generated in AngularJS -->
+    
+	 <div >
+       <div ng-view></div>
+  </div>
+</div>
 
-	<script type="text/ng-template" id="about.html">
-		<%= render 'about' %>
-	</script>
-	<script type="text/ng-template" id="contact.html">
-		<%= render 'contact' %>
-	</script>
 
-	 <div ng-controller="MainCtrl">
-       <div ng-view>
-         
-       </div>
-     </div>
-
-    <p>This is the home page</p>
+  
 	
