@@ -1,6 +1,6 @@
 
 <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="cart/destroy">Empty Cart</a>
-
+<a href="/#/products">Add products to cart</a>
 
 	<table>
 	  <thead>
@@ -14,10 +14,11 @@
 	  <tbody>
 	   
 	   <% total=0 %>
-	   <ul>
+	   
       	<%@cart.each do |id, amount|%>
 			<%@product=Product.find_by_id(id)%>
 			<%@price=@product.price %>
+	 <ul>
 		<tr>
 		<li class="product_list">
 			<td><%= link_to @product.title,@product%></td>

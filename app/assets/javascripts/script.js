@@ -21,7 +21,8 @@ var app=angular.module('pages',['ngRoute','templates'])
       templateUrl: 'home.html',
       controller: 'MainCtrl'
     }).
-    otherwise({redirectTo:'/'})
+    // Automatically redirect to home page when page reload
+    otherwise({redirectTo:'/home'})
 }])
 
 
@@ -29,7 +30,7 @@ var app=angular.module('pages',['ngRoute','templates'])
      console.log("This is the Main Controller");
 }])
 
-// Get request from products page
+// Get request from products page and return the products
 .controller('product_controller', ['$scope','$http', function ($scope, $http) {
     $http.get('/products')
         .success(function(data) {

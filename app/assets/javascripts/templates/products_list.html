@@ -1,4 +1,3 @@
-<p id="notice"><= notice %></p>
 
 <h1>Listing Products</h1>
 
@@ -16,9 +15,12 @@
   <tr>
    <!-- Loop over the array of objects(products) -->
       
-     <td>{{product.title }}</td>
+     <td><a href="/products/{{product.id}}">{{product.title }}</a></td>
      <td>{{product.description}}</td>
      <td>{{product.price | currency}}</td>
+     <td><a href="/products/{{product.id}}/edit">Edit</a></td>
+     <td> <a data-confirm="Are you sure?" data-method="delete" href="/products/{{product.id}}" rel="nofollow">Delete</a></td>
+     <td><a href="/cart/{{product.id}}/add">Add to Cart</a></td>
   </tr>
 
     
