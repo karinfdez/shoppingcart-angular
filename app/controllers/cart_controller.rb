@@ -6,7 +6,7 @@ class CartController < ApplicationController
   	else
   		@cart={}
   	end
-
+  	render json: @cart
   end
 
   def add
@@ -27,7 +27,7 @@ class CartController < ApplicationController
   	else
   		cart[id]=1
     end
-    	redirect_to cart_path
+    	redirect_to '#shopping'
   end
 
   def create
@@ -46,10 +46,10 @@ class CartController < ApplicationController
   	if session[:cart]
   		session[:cart]=nil
   	end
-  	redirect_to cart_path
+  	redirect_to '#cart'
   	
   end
   def total_item
-  	
+
   end
 end

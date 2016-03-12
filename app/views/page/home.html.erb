@@ -1,32 +1,69 @@
 <!-- <h1>HOME Page</h1> -->
 
-<div class="container">
+<div class="container-fluid page-wrap">
+    <div class="row">
+      <nav>
+      <div class="nav-wrapper">
+        <ul class="left hide-on-med-and-down">
+          <%if user_signed_in?%>
+              <li><a class="header-font" href="#home">Log out</a></li>
+          <% else %>
+            <li><a class="header-font" href="#home">Log in</a></li>
+            <li><a class="header-font" href="#about">Sign Up</a></li>
+          <% end %>
+        </ul>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons heather-font">MENU</i></a>
+        <ul class="right hide-on-med-and-down">
+              <li><a class="header-font" href="#home">Home</a></li>
+              <li><a class="header-font" href="#about">About</a></li>
+              <li><a class="header-font" href="#contact">Contact</a></li>
+              <li><a class="header-font" href="#products">Products</a></li>
+              <li><a class="header-font" href="#shopping">Shopping Cart</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+             <li><a class="header-font" href="#home">Home</a></li>
+              <li><a class="header-font" href="#about">About</a></li>
+              <li><a class="header-font" href="#contact">Contact</a></li>
+              <li><a class="header-font" href="#products">Shop</a></li>
+              <li><a class="header-font" href="#shopping">Shopping Cart</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+
+   <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
-      <div class="masthead">
+      <!-- <div class="masthead"> -->
         <!-- <h3 class="text-muted">Computer Solutions</h3> -->
-        <nav>
+       <!--  <nav>
           <ul class="nav nav-justified">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#products">Shop</a></li>
           </ul>
-        </nav>
- </div>
+        </nav> -->
+ <!-- </div> -->
 	<!-- This way rails identify the template that is generated in AngularJS -->
     
 	 
-     
-        <div ng-controller="MainCtrl">
-          <div ng-view></div>
-        </div>
+     <div ng-view></div>
 </div>
-
- <footer class="footer">
-        <p>&copy; 2015 Company, Inc.</p>
+  
+<footer class="site-footer">
+      <p>Here goes the icons</p>
 </footer>
+
+
+
+
+ <!-- <footer class="footer">
+        <p>&copy; 2015 Company, Inc.</p>
+</footer> -->
 
 
 

@@ -21,6 +21,10 @@ var app=angular.module('pages',['ngRoute','templates'])
       templateUrl: 'home.html',
       controller: 'MainCtrl'
     }).
+      when('/shopping', {
+      templateUrl: 'shopping.html',
+      controller: 'ShopCtrl'
+    }).
     // Automatically redirect to home page when page reload
     otherwise({redirectTo:'/home'})
 }])
@@ -30,18 +34,45 @@ var app=angular.module('pages',['ngRoute','templates'])
      console.log("This is the Main Controller");
 }])
 
-// Get request from products page and return the products
-.controller('product_controller', ['$scope','$http', function ($scope, $http) {
+
+
+.controller('product_controller',['$scope','$http','$rootScope', function ($scope,$http,$rootScope)  {
     $http.get('/products')
         .success(function(data) {
           $scope.products = data;
-          console.log($scope.products);
-          
+          $rootScope.shareProduct=data;
+          console.log("first variable")
+          console.log($rootScope.shareProduct);
+         
         })
         .error(function(data) {
           console.log("Error getting data");
     });
+      
+}])
+
+
+.controller('ShopCtrl',['$scope','$http', '$rootScope', function ($scope,$http,$rootScope) {
+       console.log("test")
+        $scope.myProduct=$rootScope.shareProduct
+        console.log($scope.myProduct);
+      $http.get('/cart')
+        .success(function(data) {
+          $scope.carts = data;
+          $scope.total=0;
+          for (var key in $scope.carts){
+            $scope.total=$scope.total+$scope.carts[key];
+            
+          }
+        
+          
+      })
+        .error(function(data) {
+          console.log("Error getting cart data");
+    });
 }]);
+
+
 
 
 

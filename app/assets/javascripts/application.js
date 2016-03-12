@@ -17,4 +17,5 @@
 //= require angular-route
 // Templates in app/assets/javascript/templates
 //= require_tree ./templates
+//= require materialize-sprockets
 //=require_tree .

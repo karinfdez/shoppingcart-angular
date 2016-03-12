@@ -1,0 +1,40 @@
+@import "materialize";
+
+  * {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+  font-family: 'BenchNine', sans-serif;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -60px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 60px; 
+}
+.site-footer {
+ 
+  background-color:black;
+ 	color:white;
+}
+
+
+// Main Page
+.header-font{
+	 text-transform: uppercase;
+	 font-size: 19px;
+}
+
+        
+// .hoverable {
+// 	transition: box-shadow .25s;
+// }
+
+

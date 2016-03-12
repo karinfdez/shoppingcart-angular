@@ -1,0 +1,48 @@
+<div class="row">
+	<h2>Shopping Cart</h2>
+
+	<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="cart/destroy">Empty Cart</a>
+	<a href="/#/products">Add products to cart</a>
+
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Product</th>
+		      <th>Amount</th>
+		      <th>Price</th>
+		      <th colspan="3"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="(key, value) in carts"> 
+	  			<td>{{key}}</td>
+	  			<td>{{value}}</td>
+			</tr>
+		   
+	      	<!-- <%@cart.each do |id, amount|%> -->
+				<!-- <%@product=Product.find_by_id(id)%>
+				<%@price=@product.price %>  -->
+		 <!-- <ul> -->
+			<!-- <tr> -->
+
+
+
+			<!-- <li class="product_list">
+				<td><%= link_to @product.title,@product%></td>
+				<td><%= amount %></td>
+				<td><%= number_to_currency(@price, :unit=>'$') %></td>
+				<td><a href='/cart/<%=id%>/remove'>Remove this item</a></td>
+				<% total+=(@product.price*amount) %>
+			</li> -->
+			<!-- </tr> -->
+		<!-- <% end %> -->
+		<!-- </ul> -->
+		
+		</tbody>
+	</table>
+	<div class="total-products" ng-controller='ShopCtrl'>
+        <p>Total items: {{total}}</p>
+	</div>
+<!-- <p>Total amount: <%=number_to_currency(total, :unit=>'$')%></p> -->
+
+</div>
