@@ -50,7 +50,7 @@ var app=angular.module('pages',['ngRoute','templates'])
 
 // Let me use this product later in multiple controllers
 
-.factory('productService', function($http) {
+.factory('productService',['$http',function($http) {
  return{
     getProducts : function() {
         return $http({
@@ -59,25 +59,27 @@ var app=angular.module('pages',['ngRoute','templates'])
         })
     }
   }
-})
+}])
 
-.controller('proCtrl','productService'[function(productService){
-      
-      $http.get('/products/1.json')
+// Here I'm getting the id pass it in the view
+.controller('proCtrl',['$http','$scope',function($http,$scope){
+   
+    $scope.clickEvent = function(obj) {
+        var id=obj.target.attributes.data.value;
+         $http.get(`/products/${id}.json`)
         .success(function(data) {
-          var carts = data; 
-          if (Object.keys(carts).length === 0){
-               $scope.message="Your cart is currently empty";
-          }
-
-        console.log("controller1",$scope.products);
-      });
+          $scope.specificProd=data;
+          console.log( $scope.specificProd);
+         
+      });   
+    }  
+     
 }])
 .controller('product_controller',['$scope','productService', function ($scope,productService)  {
     
       productService.getProducts().success(function(data){
         $scope.products=data;
-        console.log("controller1",$scope.products);
+        
       });
       
 }])
@@ -92,25 +94,25 @@ var app=angular.module('pages',['ngRoute','templates'])
          $http.get('/cart.json')
         .success(function(data) {
           var carts = data; 
-          if (Object.keys(carts).length === 0){
-               $scope.message="Your cart is currently empty";
-          }
-          else {
-         for ( var key in carts) {
-            productCart.forEach(function(product){
-              if (product.id===parseInt(key)){
-                $scope.productsArray.push({productTitle: product.title,productPrice: product.price* carts[key],productAmount: carts[key],productImage: product.image,cartId: key });
-                $scope.totalPrice+=product.price* carts[key]
-              }
+            if (Object.keys(carts).length === 0){
+                 $scope.message="Your cart is currently empty";
+            }
+            else {
+                for ( var key in carts) {
+                  productCart.forEach(function(product){
+                    if (product.id===parseInt(key)){
+                      $scope.productsArray.push({productTitle: product.title,productPrice: product.price* carts[key],productAmount: carts[key],productImage: product.image,cartId: key });
+                      $scope.totalPrice+=product.price* carts[key]
+                    }
 
-             });
-            $scope.total=$scope.total+carts[key];
-          }
-        }
+                  });
+                  $scope.total=$scope.total+carts[key];
+                }
+            }
          
         })
 
-      });   
+    });   
 }]);
 
 
