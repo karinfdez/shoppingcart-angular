@@ -34,6 +34,10 @@ var app=angular.module('pages',['ngRoute','templates'])
       templateUrl: 'shopping.html',
       controller: 'ShopCtrl'
     }).
+     when('/product', {
+      templateUrl: 'product.html',
+      controller: 'proCtrl'
+    }).
     // Automatically redirect to home page when page reload
     otherwise({redirectTo:'/home'})
 }])
@@ -42,6 +46,7 @@ var app=angular.module('pages',['ngRoute','templates'])
 .controller('MainCtrl',[function(){
      console.log("This is the Main Controller");
 }])
+
 
 // Let me use this product later in multiple controllers
 
@@ -56,7 +61,18 @@ var app=angular.module('pages',['ngRoute','templates'])
   }
 })
 
+.controller('proCtrl','productService'[function(productService){
+      
+      $http.get('/products/1.json')
+        .success(function(data) {
+          var carts = data; 
+          if (Object.keys(carts).length === 0){
+               $scope.message="Your cart is currently empty";
+          }
 
+        console.log("controller1",$scope.products);
+      });
+}])
 .controller('product_controller',['$scope','productService', function ($scope,productService)  {
     
       productService.getProducts().success(function(data){

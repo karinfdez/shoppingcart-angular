@@ -23,6 +23,7 @@
 	  			<td>{{product.productPrice | currency}}</td>
 	  			<td>{{product.productImage}}</td>
 	  			<td><a href="/cart/{{product.cartId}}/remove">Delete Item</a></td>
+	  			<td><a href="/cart/{{product.cartId}}/add">Add Item</a></td>
 	  		</tr>	
 		
 		</tbody>
@@ -36,6 +37,8 @@
 </div>
 <div ng-show="productsArray.length===0">
 	 <p>{{message}}</p>
+	 <a href="/#/products">Add products to cart</a>
+
 </div>
 	
 <!-- <p>Total amount: <%=number_to_currency(total, :unit=>'$')%></p> -->

@@ -45,6 +45,7 @@ class CartController < ApplicationController
 
   end
 
+ 
   def destroy
   	# Destroy existing session
   	if session[:cart]
@@ -53,7 +54,5 @@ class CartController < ApplicationController
   	redirect_to '#cart'
   	
   end
-  def total_item
-
-  end
+ 
 end
