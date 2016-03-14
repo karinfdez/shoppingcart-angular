@@ -1,6 +1,6 @@
 <div class="row">
 	<h2>Shopping Cart</h2>
-
+	<div ng-show="productsArray!='undefined' && productsArray!='null' && productsArray.length!=0" ng-repeat="product in productsArray" >
 	<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="cart/destroy">Empty Cart</a>
 	<a href="/#/products">Add products to cart</a>
 
@@ -8,48 +8,36 @@
 		  <thead>
 		    <tr>
 		      <th>Product</th>
+		      <th>Amount</th>
 		       <th>Price</th>
 		      <th>Image</th>
-		      <th>Amount</th>
+		      
 		      
 		      <!-- <th colspan="3"></th> -->
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr ng-repeat="product in productsArray" >
+		    <tr>
 	  			<td>{{product.productTitle}}</td>
-	  			<td>{{product.productPrice}}</td>
-	  			<td>{{product.productImage}}</td>
 	  			<td>{{product.productAmount}}</td>
-	  	
-	  			<!-- <td>{{product.productAmount}}</td> -->
-			    <!-- <td ng-repeat="(key,value) in carts">{{value}}</td> -->
-			 
-		   <!-- ng-repeat="product in productCart" -->
-	      	<!-- <%@cart.each do |id, amount|%> -->
-				<!-- <%@product=Product.find_by_id(id)%>
-				<%@price=@product.price %>  -->
-		 <!-- <ul> -->
-			<!-- <tr> -->
-
-
-
-			<!-- <li class="product_list">
-				<td><%= link_to @product.title,@product%></td>
-				<td><%= amount %></td>
-				<td><%= number_to_currency(@price, :unit=>'$') %></td>
-				<td><a href='/cart/<%=id%>/remove'>Remove this item</a></td>
-				<% total+=(@product.price*amount) %>
-			</li> -->
-			<!-- </tr> -->
-		<!-- <% end %> -->
-		<!-- </ul> -->
+	  			<td>{{product.productPrice | currency}}</td>
+	  			<td>{{product.productImage}}</td>
+	  			<td><a href="/cart/{{product.cartId}}/remove">Delete Item</a></td>
+	  		</tr>	
 		
 		</tbody>
 	</table>
-	<div class="total-products" ng-controller='ShopCtrl'>
-        <p>Total items: {{total}}</p>
+	
+	<div class="total-products">
+        <p>Total items on cart: {{total}}</p>
+        <p>Total Price: {{totalPrice | currency}}</p>
+       
 	</div>
+</div>
+<div ng-show="productsArray.length===0">
+	 <p>{{message}}</p>
+</div>
+	
 <!-- <p>Total amount: <%=number_to_currency(total, :unit=>'$')%></p> -->
-
+	
 </div>

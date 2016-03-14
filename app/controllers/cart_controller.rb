@@ -37,8 +37,12 @@ class CartController < ApplicationController
   def remove_item
   	id=params[:id]
   	cart=session[:cart]
-  	cart.delete(id)
-  	redirect_to cart_path
+  	cart[id]-=1
+    if cart[id]===0
+      cart.delete(id) 
+    end
+  	redirect_to '#shopping'
+
   end
 
   def destroy
