@@ -3,8 +3,20 @@
 //to call the templates inside the javascripts folder and ngResource to call $resource
 var app=angular.module('pages',['ngRoute','templates'])
 
+
 .config(['$routeProvider',function($routeProvider){
     $routeProvider.
+    when('/home', {
+      templateUrl: 'home.html',
+      controller: 'MainCtrl',
+      resolve:{
+      'products':function(productService){
+        return productService.Promise;
+       }
+      }
+    }).
+    
+  
     when('/about', {
       templateUrl: 'about.html',
       controller: 'MainCtrl'
@@ -17,11 +29,8 @@ var app=angular.module('pages',['ngRoute','templates'])
       templateUrl: 'products_list.html',
       controller: 'product_controller'
     }).
-     when('/home', {
-      templateUrl: 'home.html',
-      controller: 'MainCtrl'
-    }).
-      when('/shopping', {
+    
+    when('/shopping', {
       templateUrl: 'shopping.html',
       controller: 'ShopCtrl'
     }).
@@ -35,41 +44,83 @@ var app=angular.module('pages',['ngRoute','templates'])
 }])
 
 
-
-.controller('product_controller',['$scope','$http','$rootScope', function ($scope,$http,$rootScope)  {
-    $http.get('/products')
-        .success(function(data) {
-          $scope.products = data;
-          $rootScope.shareProduct=data;
-          console.log("first variable")
-          console.log($rootScope.shareProduct);
-         
+.factory('productService', function($http) {
+ return{
+    getProducts : function() {
+        return $http({
+            url: '/products.json',
+            method: 'GET'
         })
-        .error(function(data) {
-          console.log("Error getting data");
-    });
+    }
+ }
+})
+
+
+
+//     function(){
+//     $http.get('/products')
+//     .success(function(data) {
+//      $scope.data = data;  
+//      // return $scope.data;
+//     });
+//   }
+// }
+// }])
+
+// .factory('productService',['$scope','$http', function($scope,$http) {
+//    $http.get('/products')
+//     .success(function(data) {
+//     $scope.data = data;  
+//     console.log( $scope.data);
+//   });
+//    console.log("Test",$scope.data);
+//   return {$scope.data};
+
+// }])
+
+// controllers. = function($scope, $location, $http, photosFactory) {
+//     $scope.photos = [];
+//    photosFactory.getPhotos().success(function(data){
+//    $scope.photos=data;
+//    });
+// }
+
+.controller('product_controller',['$scope','productService', function ($scope,productService)  {
+    
+      productService.getProducts().success(function(data){
+        $scope.products=data;
+        console.log("controller1",$scope.products);
+      });
       
 }])
 
 
-.controller('ShopCtrl',['$scope','$http', '$rootScope', function ($scope,$http,$rootScope) {
-       console.log("test")
-        $scope.myProduct=$rootScope.shareProduct
-        console.log($scope.myProduct);
-      $http.get('/cart')
+.controller('ShopCtrl',['$scope','$http', 'productService', function ($scope,$http,productService) {
+    $scope.productsArray=[];
+    productService.getProducts().success(function(data){
+        $scope.productCart=data;
+        // console.log("controller2", $scope.productCart);
+         $http.get('/cart.json')
         .success(function(data) {
-          $scope.carts = data;
-          $scope.total=0;
-          for (var key in $scope.carts){
-            $scope.total=$scope.total+$scope.carts[key];
-            
-          }
-        
-          
-      })
-        .error(function(data) {
-          console.log("Error getting cart data");
-    });
+          $scope.carts = data; 
+          // console.log(Object.keys($scope.carts).length );
+          // console.log("bey",$scope.carts);
+         for ( var key in $scope.carts) {
+            $scope.productCart.forEach(function(product){
+              // console.log("cartId",key);
+              //  console.log("product",product.id);
+              if (product.id===parseInt(key)){
+               
+                $scope.productsArray.push({productTitle: product.title,productPrice: product.price,productAmount: $scope.carts[key],productImage: product.image});
+                  
+              }
+
+             });
+          };
+         
+        });
+
+      });   
 }]);
 
 

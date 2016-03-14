@@ -8,17 +8,24 @@
 		  <thead>
 		    <tr>
 		      <th>Product</th>
+		       <th>Price</th>
+		      <th>Image</th>
 		      <th>Amount</th>
-		      <th>Price</th>
-		      <th colspan="3"></th>
+		      
+		      <!-- <th colspan="3"></th> -->
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr ng-repeat="(key, value) in carts"> 
-	  			<td>{{key}}</td>
-	  			<td>{{value}}</td>
-			</tr>
-		   
+		    <tr ng-repeat="product in productsArray" >
+	  			<td>{{product.productTitle}}</td>
+	  			<td>{{product.productPrice}}</td>
+	  			<td>{{product.productImage}}</td>
+	  			<td>{{product.productAmount}}</td>
+	  	
+	  			<!-- <td>{{product.productAmount}}</td> -->
+			    <!-- <td ng-repeat="(key,value) in carts">{{value}}</td> -->
+			 
+		   <!-- ng-repeat="product in productCart" -->
 	      	<!-- <%@cart.each do |id, amount|%> -->
 				<!-- <%@product=Product.find_by_id(id)%>
 				<%@price=@product.price %>  -->
