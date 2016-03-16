@@ -1,9 +1,12 @@
 <div class="row">
 	<h2>Shopping Cart</h2>
 	<div>
-	<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="cart/destroy">Empty Cart</a>
+	
 	<a href="/#/products">Add products to cart</a>
-
+		<div ng-hide="productsArray==='undefined' || productsArray==='null' || productsArray.length===0">	
+		<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="cart/destroy">
+		Empty Cart</a>	
+		</div>
 		<table ng-hide="productsArray==='undefined' || productsArray==='null' || productsArray.length===0">
 		  <thead>
 		    <tr>
@@ -11,9 +14,6 @@
 		      <th>Amount</th>
 		       <th>Price</th>
 		      <th>Image</th>
-		      
-		      
-		      <!-- <th colspan="3"></th> -->
 		    </tr>
 		  </thead>
 		  <tbody>
