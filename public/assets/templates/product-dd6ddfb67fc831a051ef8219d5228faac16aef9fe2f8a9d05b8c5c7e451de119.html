@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row" ng-controller='proCtrl'>
+		<div class="col-xs-6 col-xs-offset-3">
+			<p>{{specificProd.title}}</p>
+			<p>Product Description: {{specificProd.description}}</p>
+			<p>Price:  {{specificProd.price | currency}}</p>
+			<p>{{specificProd.image}}</p>
+		</div>
+	</div>
+</div>
+
+
+<!-- <p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @product.image %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p> -->
+
+<!-- <%= link_to 'Edit', edit_product_path(@product) %> |
+<%#= link_to 'Back', products_path %>
+<a href="/#/products">Back</a> -->
