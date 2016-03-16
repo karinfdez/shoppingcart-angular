@@ -58,7 +58,7 @@ var app=angular.module('pages',['ngRoute','templates'])
  return{
     getProducts : function() {
         return $http({
-            url: '/products.json',
+            url: '/products',
             method: 'GET'
         })
     },
