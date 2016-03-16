@@ -34,6 +34,7 @@ var app=angular.module('pages',['ngRoute','templates'])
       templateUrl: 'shopping.html',
       controller: 'ShopCtrl'
     }).
+    
     //  when('/product', {
     //   templateUrl: 'product.html',
     //   controller: 'proCtrl'
