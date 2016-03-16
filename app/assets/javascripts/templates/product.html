@@ -2,8 +2,9 @@
 	<div class="row" ng-controller='proCtrl'>
 		<div class="col-xs-6 col-xs-offset-3">
 			<p>{{specificProd.title}}</p>
-			<p>{{specificProd.description}}</p>
-			<p>{{specificProd.price}}</p>
+			<p>Product Description: {{specificProd.description}}</p>
+			<p>Price:  {{specificProd.price | currency}}</p>
+			<p>{{specificProd.image}}</p>
 		</div>
 	</div>
 </div>
