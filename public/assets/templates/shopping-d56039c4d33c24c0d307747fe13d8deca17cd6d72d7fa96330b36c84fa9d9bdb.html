@@ -1,0 +1,46 @@
+<div class="row">
+	<h2>Shopping Cart</h2>
+	<div>
+	<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="cart/destroy">Empty Cart</a>
+	<a href="/#/products">Add products to cart</a>
+
+		<table ng-hide="productsArray==='undefined' || productsArray==='null' || productsArray.length===0">
+		  <thead>
+		    <tr>
+		      <th>Product</th>
+		      <th>Amount</th>
+		       <th>Price</th>
+		      <th>Image</th>
+		      
+		      
+		      <!-- <th colspan="3"></th> -->
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-show="productsArray!='undefined' && productsArray!='null' && productsArray.length!=0" ng-repeat="product in productsArray" >
+	  			<td>{{product.productTitle}}</td>
+	  			<td>{{product.productAmount}}</td>
+	  			<td>{{product.productPrice | currency}}</td>
+	  			<td>{{product.productImage}}</td>
+	  			<td><a href="/cart/{{product.cartId}}/remove">Delete Item</a></td>
+	  			<td><a href="/cart/{{product.cartId}}/add">Add Item</a></td>
+	  		</tr>	
+		
+		</tbody>
+	</table>
+	
+	<div ng-hide="productsArray==='undefined' || productsArray==='null' || productsArray.length===0">
+        <p>Total items on cart: {{total}}</p>
+        <p>Total Price: {{totalPrice | currency}}</p>
+       
+	</div>
+</div>
+<div ng-show="productsArray.length===0">
+	 <p>{{message}}</p>
+	
+
+</div>
+	
+<!-- <p>Total amount: <%=number_to_currency(total, :unit=>'$')%></p> -->
+	
+</div>
