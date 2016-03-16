@@ -1,7 +1,7 @@
 // var app=angular.module("pages",['ngRoute'])
 // ngRoute for defining the routes, templates for using the gem on rails
 //to call the templates inside the javascripts folder and ngResource to call $resource
-var app=angular.module('pages',['ngRoute','templates'])
+var app=angular.module('pages',['ngRoute','templates','ProductService'])
 
 
 .config(['$routeProvider',function($routeProvider){
