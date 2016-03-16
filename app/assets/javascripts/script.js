@@ -1,7 +1,7 @@
 // var app=angular.module("pages",['ngRoute'])
 // ngRoute for defining the routes, templates for using the gem on rails
 //to call the templates inside the javascripts folder and ngResource to call $resource
-var app=angular.module('pages',['ngRoute','templates','ProductService'])
+var app=angular.module('pages',['ngRoute','templates'])
 
 
 .config(['$routeProvider',function($routeProvider){
@@ -10,8 +10,8 @@ var app=angular.module('pages',['ngRoute','templates','ProductService'])
       templateUrl: 'home.html',
       controller: 'MainCtrl',
       resolve:{
-      'products':function(productService){
-        return productService.Promise;
+      'products':function(ProductService){
+        return ProductService.Promise;
        }
       }
     }).
