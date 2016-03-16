@@ -134,7 +134,7 @@ var app=angular.module('pages',['ngRoute','templates'])
                   productCart.forEach(function(product){
                     if (product.id===parseInt(key)){
                       $scope.productsArray.push({productTitle: product.title,productPrice: product.price* carts[key],productAmount: carts[key],productImage: product.image,cartId: key });
-                      $scope.totalPrice+=product.price* carts[key]
+                      $scope.totalPrice+=product.price * carts[key]
                     }
 
                   });
