@@ -1,7 +1,8 @@
-<div class="row">
+<div class="row" ng-controller="product_list_controller">
   <h2>Listing Products</h2>
   <div class="row tabs-wrapper">
-    <table ng-controller="product_controller">
+    <p>{{myid}}</p>
+    <table >
       <thead>
         <tr>
           <th>Title</th>
@@ -11,21 +12,19 @@
           <th colspan="3"></th>
         </tr>
       </thead>
-      <tbody ng-controller="proCtrl" ng-repeat="product in products">
+      <tbody ng-repeat="product in products">
       <tr>
        <!-- Loop over the array of objects(products) -->
        <!-- Here I'm declaring the id of the specific product to pass it later to the controller -->
-      
-        <td><a ng-click="clickEvent($event)" data="{{product.id}}" href="#product">{{product.title}}</a></td>
+
+        <td><a data="{{product.id}}" href="#product/{{product.id}}">{{product.title}}</a></td>
          <!-- <td><a href="/#/product" data="{{product.id}}">{{product.title }}</a></td> -->
-         <td>{{product.description}}</td>
+         <td><span ng-click="clickEvent(product.id)">{{product.description}}</span></td>
          <td>{{product.price | currency}}</td>
          <td><a href="/products/{{product.id}}/edit">Edit</a></td>
          <td> <a data-confirm="Are you sure?" data-method="delete" href="/products/{{product.id}}" rel="nofollow">Delete</a></td>
          <td><a href="/cart/{{product.id}}/add">Add to Cart</a></td>
       </tr>
-
-        
         <!-- <% @products.each do |product| %> -->
         <!--   <tr>
             <td><%= product.title %></td>

@@ -27,14 +27,18 @@ var app=angular.module('pages',['ngRoute','templates'])
     }).
     when('/products', {
       templateUrl: 'products_list.html',
-      controller: 'product_controller'
+      controller: 'product_list_controller'
     }).
     
     when('/shopping', {
       templateUrl: 'shopping.html',
       controller: 'ShopCtrl'
     }).
-     when('/product', {
+    //  when('/product', {
+    //   templateUrl: 'product.html',
+    //   controller: 'proCtrl'
+    // }).
+    when('/product/:id', {
       templateUrl: 'product.html',
       controller: 'proCtrl'
     }).
@@ -50,46 +54,74 @@ var app=angular.module('pages',['ngRoute','templates'])
 
 // Let me use this product later in multiple controllers
 
-.factory('productService',['$http',function($http) {
+.factory('ProductService',['$http', '$q',function($http, $q) {
  return{
     getProducts : function() {
         return $http({
             url: '/products.json',
             method: 'GET'
         })
+    },
+    getProductDetails: function (argument) {
+      // console.log(argument);
+        var url = '/products/' + argument;
+        var defered = $q.defer();
+
+        $http.get(url).then(
+          function(response) {
+            defered.resolve(response);
+          },
+          function(error){
+            defered.reject(error);
+            // console.log(error);
+          }
+        );
+
+        return defered.promise;
     }
   }
 }])
 
 // Here I'm getting the id pass it in the view
-.controller('proCtrl',['$http','$scope',function($http,$scope){
-   
-    $scope.clickEvent = function(obj) {
-        var id=obj.target.attributes.data.value;
-         $http.get(`/products/${id}.json`)
-        .success(function(data) {
-          $scope.specificProd=data;
-          console.log( $scope.specificProd);
-         
-      });   
-    }  
+.controller('proCtrl',['$http','$scope', '$routeParams', 'ProductService' ,function($http, $scope, $routeParams, ProductService){
+    // console.log($routeParams);
+
+    var product = $routeParams;
+
+    getDetails();
+
+    function getDetails(){
+      ProductService.getProductDetails(product.id).then(
+        function(response){
+          $scope.specificProd = response.data;
+        },
+        function(error){
+          console.log(error)
+        }
+      ); 
+    }
      
 }])
-.controller('product_controller',['$scope','productService', function ($scope,productService)  {
-    
-      productService.getProducts().success(function(data){
+
+.controller('product_list_controller',['$scope','ProductService', function ($scope,ProductService)  {
+      
+      $scope.clickEvent = clickEvent;
+      function clickEvent(id){
+        $scope.myid=id;
+      }
+
+      ProductService.getProducts().success(function(data){
         $scope.products=data;
-        
       });
       
 }])
 
 
-.controller('ShopCtrl',['$scope','$http', 'productService', function ($scope,$http,productService) {
+.controller('ShopCtrl',['$scope','$http', 'ProductService', function ($scope,$http,ProductService) {
     $scope.productsArray=[];
     $scope.total=0;
     $scope.totalPrice=0;
-    productService.getProducts().success(function(data){
+    ProductService.getProducts().success(function(data){
         var productCart=data;
          $http.get('/cart.json')
         .success(function(data) {
