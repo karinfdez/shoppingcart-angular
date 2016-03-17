@@ -1,32 +1,49 @@
  
-<div class="row" ng-controller="product_list_controller">
-  <a href="/products/new">Create new Product</a>
+<div class="row first_product_row">
+   <a href="/products/new">Create new Product</a>
+</div>
+<!-- <div ng-controller="product_list_controller"> -->
+<div class="row product_images">
+  <div class="col-xs-4 each_product" ng-repeat="product in products">
+      <h3><a data="{{product.id}}" href="#product/{{product.id}}">{{product.title}}</a></h3>
+      <a data="{{product.id}}" href="#product/{{product.id}}"><img src="img/blueTemplate.jpg"></a>
+    <h4>{{product.price | currency}}</h4>
+    <a class="btn btn-primary btn-block" href="/cart/2/add">Add to Cart</a>
+  </div>
+
+</div>
+  <!-- <a href="/products/new">Create new Product</a>
   <h2>Listing Products</h2>
-  <div class="row tabs-wrapper">
+  <div class="row tabs-wrapper"> -->
     <!-- <p>{{myid}}</p> -->
-    <table >
+    <!-- <table >
       <thead>
         <tr>
           <th>Title</th>
           <th>Description</th>
           <th>Price</th>
-           <!-- <th>Image</th> -->
+           <th>Image</th>
           <th colspan="3"></th>
         </tr>
       </thead>
       <tbody ng-repeat="product in products">
-      <tr>
+      <tr> -->
        <!-- Loop over the array of objects(products) -->
        <!-- Here I'm declaring the id of the specific product to pass it later to the controller -->
-
-        <td><a data="{{product.id}}" href="#product/{{product.id}}">{{product.title}}</a></td>
+<!-- 
+        <td><a data="{{product.id}}" href="#product/{{product.id}}">{{product.title}}</a></td> -->
          <!-- <td><a href="/#/product" data="{{product.id}}">{{product.title }}</a></td> -->
-         <td><span ng-click="clickEvent(product.id)">{{product.description}}</span></td>
+        <!--  <td><span ng-click="clickEvent(product.id)">{{product.description}}</span></td>
          <td>{{product.price | currency}}</td>
          <td><a href="/products/{{product.id}}/edit">Edit</a></td>
          <td> <a data-confirm="Are you sure?" data-method="delete" href="/products/{{product.id}}" rel="nofollow">Delete</a></td>
          <td><a href="/cart/{{product.id}}/add">Add to Cart</a></td>
-      </tr>
+      </tr> -->
+
+
+
+
+
         <!-- <% @products.each do |product| %> -->
         <!--   <tr>
             <td><%= product.title %></td>
@@ -39,8 +56,8 @@
             <td><a href="/cart/<%= product.id%>/add">Add to Cart</a></td>
           </tr>
         <% end %> -->
-      </tbody>
+      <!-- </tbody>
     </table>
-  </div>
+  </div> -->
   <!-- <%= link_to 'New Product', new_product_path %> -->
 </div>

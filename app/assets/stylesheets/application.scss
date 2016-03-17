@@ -1,4 +1,6 @@
 @import "materialize";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 
   * {
   margin: 0;
@@ -6,6 +8,9 @@
 html, body {
   height: 100%;
   font-family: 'BenchNine', sans-serif;
+}
+.notice,.alert{
+  text-align:center;
 }
 .page-wrap {
   min-height: 100%;
@@ -32,9 +37,22 @@ html, body {
 	 font-size: 19px;
 }
 
-        
-// .hoverable {
-// 	transition: box-shadow .25s;
-// }
-
+// Product's  page
+.first_product_row{
+  text-align: center;
+}
+ .product_images{
+  text-align:center;
+}
+.product_images img{
+  width:70%;
+}
+.product_images a{
+  width:50%;
+  text-align:center;
+  margin:auto;
+}
+.each_product{
+  padding-bottom:30px;
+}
 
