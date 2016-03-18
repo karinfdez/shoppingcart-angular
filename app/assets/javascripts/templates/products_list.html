@@ -4,11 +4,11 @@
 </div>
 <!-- <div ng-controller="product_list_controller"> -->
 <div class="row product_images">
-  <div class="col-xs-4 each_product" ng-repeat="product in products">
+  <div class="col-xs-12 col-md-4 col-lg-4 each_product" ng-repeat="product in products">
       <h3><a data="{{product.id}}" href="#product/{{product.id}}">{{product.title}}</a></h3>
-      <a data="{{product.id}}" href="#product/{{product.id}}"><img src="img/blueTemplate.jpg"></a>
+      <a data="{{product.id}}" href="#product/{{product.id}}"><img ng-src="img/{{product.image}}"></a>
     <h4>{{product.price | currency}}</h4>
-    <a class="btn btn-primary btn-block" href="/cart/2/add">Add to Cart</a>
+    <a class="btn btn-primary btn-block" href="/cart/{{product.id}}/add">Add to Cart</a>
   </div>
 
 </div>
@@ -42,22 +42,5 @@
 
 
 
-
-
-        <!-- <% @products.each do |product| %> -->
-        <!--   <tr>
-            <td><%= product.title %></td>
-            <td><%= product.description %></td>
-            <td><%= product.image %></td>
-            <td><%= product.price %></td>
-            <td><%= link_to 'Show', product %></td>
-            <td><%= link_to 'Edit', edit_product_path(product) %></td>
-            <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <td><a href="/cart/<%= product.id%>/add">Add to Cart</a></td>
-          </tr>
-        <% end %> -->
-      <!-- </tbody>
-    </table>
-  </div> -->
   <!-- <%= link_to 'New Product', new_product_path %> -->
 </div>

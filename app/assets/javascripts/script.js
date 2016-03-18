@@ -122,6 +122,9 @@ var app=angular.module('pages',['ngRoute','templates'])
     $scope.productsArray=[];
     $scope.total=0;
     $scope.totalPrice=0;
+    $scope.count=0;
+    // var productId=$routeParams;
+    // console.log("id",productId);
     ProductService.getProducts().success(function(data){
         var productCart=data;
          $http.get('/cart.json')
@@ -131,21 +134,26 @@ var app=angular.module('pages',['ngRoute','templates'])
                  $scope.message="Your cart is currently empty";
             }
             else {
+              console.log("this cart",carts);
                 for ( var key in carts) {
+
                   productCart.forEach(function(product){
                     if (product.id===parseInt(key)){
-                      $scope.productsArray.push({productTitle: product.title,productPrice: product.price* carts[key],productAmount: carts[key],productImage: product.image,cartId: key });
                       $scope.totalPrice+=product.price * carts[key]
+                      var count=carts[product.id];
+                       $scope.productsArray.push({id:product.id,title:product.title,image:product.image,price:product.price,amount:count});
+                      console.log("count",$scope.count);
                     }
-
+                   
                   });
+                  console.log("tax",$scope.totalTax);
                   $scope.total=$scope.total+carts[key];
+                  // console.log("array of products",$scope.productsArray);
                 }
             }
          
-        })
-
-    });   
+        });
+      });
 }]);
 
 
