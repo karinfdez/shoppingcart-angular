@@ -107,11 +107,15 @@ var app=angular.module('pages',['ngRoute','templates'])
         $scope.myid=id;
       }
 
+
       ProductService.getProducts().success(function(data){
         $scope.products=data;
       });
+
+      // this.filteredArray = filterFilter(this.array, 'a');
       
 }])
+
 
 
 .controller('ShopCtrl',['$scope','$http', 'ProductService', function ($scope,$http,ProductService) {
