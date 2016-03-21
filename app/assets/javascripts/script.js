@@ -17,10 +17,6 @@ var app=angular.module('pages',['ngRoute','templates'])
     }).
     
   
-    when('/about', {
-      templateUrl: 'about.html',
-      controller: 'MainCtrl'
-    }).
     when('/contact', {
       templateUrl: 'contact.html',
       controller: 'MainCtrl'
