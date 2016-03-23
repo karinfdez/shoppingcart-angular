@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="row" ng-controller="MessageCtrl">
+		<div class="col-xs-6 col-xs-offset-3">
+		<form validate class="simple-form">
+		    Name: <input type="text" ng-model="message.name" /><br />
+		    E-mail: <input type="email" ng-model="message.email" /><br />
+		    Message: <textarea type="text" ng-model="message.content" />
+		    <input type="submit" ng-click="createMessage(message)" value="Save" />
+		 </form>
+		</div>
+	</div>
+ </div>
