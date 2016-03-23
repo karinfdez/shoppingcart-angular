@@ -23,34 +23,26 @@ module Shocart
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+     config.active_record.raise_in_transactional_callbacks = true
 
-    config.action_mailer.delivery_method= :smtp
+    config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
-      port: 587,
-      user_name: ENV['gmail_username'],
-      password: ENV['gmail_password'],
-      authentication: :plain,
-      enable_starttls_auto: true
+      :address        => ENV['CLOUDMAILIN_FORWARD_ADDRESS'],
+      :user_name      => ENV['CLOUDMAILIN_USERNAME'],
+      :password       => ENV['CLOUDMAILIN_PASSWORD'],
+      :authentication => :plain,
     }
 
-    # config.action_mailer.default_url_options = {
-    #   host: "localhost:3000"
+    # config.action_mailer.delivery_method= :smtp
+    # config.action_mailer.smtp_settings = {
+    #   address: "smtp.gmail.com",
+    #   port: 587,
+    #   user_name: ENV['gmail_username'],
+    #   password: ENV['gmail_password'],
+    #   authentication: :plain,
+    #   enable_starttls_auto: true
     # }
 
-#     config.action_mailer.smtp_settings = {
-#       address: "smtp.gmail.com",
-#       port: 587,
-#       domain: "localhost:3000",
-#       user_name: ENV['gmail_username'],
-#       password: ENV['gmail_password'],
-#       authentication: :plain,
-#       enable_starttls_auto: true
-# }
-
-# config.action_mailer.default_url_options = {
-#   host: "yourdomain.tld"
-# }
+  
     end
 end
