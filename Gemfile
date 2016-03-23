@@ -48,7 +48,7 @@ gem 'materialize-sass'
 gem 'rails_12factor',group: :production
 
 # To avoid the CSRF authenticity token error
-  gem 'angular_csrf'
+  gem 'angular_csrf',group: :production
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
