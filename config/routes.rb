@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'messages/new'
+
+  get 'messages/create'
+
   devise_for :users
   # get 'cart/index'
 
@@ -19,7 +23,8 @@ Rails.application.routes.draw do
 
   get 'page/contact'
 
-  
+  get 'contact', to: 'messages#new', as: 'contact'
+  post 'contact', to: 'messages#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

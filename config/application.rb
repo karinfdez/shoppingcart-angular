@@ -2,6 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -22,5 +24,33 @@ module Shocart
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-  end
+
+    config.action_mailer.delivery_method= :smtp
+    config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      user_name: ENV['gmail_username'],
+      password: ENV['gmail_password'],
+      authentication: :plain,
+      enable_starttls_auto: true
+    }
+
+    # config.action_mailer.default_url_options = {
+    #   host: "localhost:3000"
+    # }
+
+#     config.action_mailer.smtp_settings = {
+#       address: "smtp.gmail.com",
+#       port: 587,
+#       domain: "localhost:3000",
+#       user_name: ENV['gmail_username'],
+#       password: ENV['gmail_password'],
+#       authentication: :plain,
+#       enable_starttls_auto: true
+# }
+
+# config.action_mailer.default_url_options = {
+#   host: "yourdomain.tld"
+# }
+    end
 end
