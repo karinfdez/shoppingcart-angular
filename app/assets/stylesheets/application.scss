@@ -122,7 +122,11 @@ input.ng-untouched.ng-dirty.ng-empty.ng-valid.ng-valid-email,
 input.ng-untouched.ng-dirty.ng-empty.ng-valid.ng-valid-email,
 textarea.ng-pristine.ng-valid.ng-empty.ng-valid-email.ng-touched,
 textarea.ng-pristine.ng-valid.ng-empty.ng-touched,
-textarea.ng-pristine.ng-untouched.ng-valid.ng-empty{
+textarea.ng-pristine.ng-untouched.ng-valid.ng-empty,
+textarea.ng-valid.ng-touched.ng-not-empty.ng-dirty.ng-valid-parse,
+textarea.ng-untouched.ng-valid.ng-not-empty.ng-dirty.ng-valid-parse,
+textarea.ng-untouched.ng-valid.ng-dirty.ng-valid-parse.ng-empty,
+textarea.ng-valid.ng-dirty.ng-valid-parse.ng-empty.ng-touched{
   // width:70%;
   font-size:15px;
   font-color:black;
@@ -133,11 +137,12 @@ textarea.ng-pristine.ng-untouched.ng-valid.ng-empty{
 
 .send-email{
     width: 140px;
-    background-color: orange;
+    background-color: #E95A24;
     margin-top: 20px;
     margin-left: 35%;
     border: none;
     color: white;
+
 }
 
  // .message-product{
