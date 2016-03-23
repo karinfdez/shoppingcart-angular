@@ -31,10 +31,10 @@ var app=angular.module('pages',['ngRoute','templates'])
       controller: 'ShopCtrl'
     }).
     
-    //  when('/product', {
-    //   templateUrl: 'product.html',
-    //   controller: 'proCtrl'
-    // }).
+     when('/contact', {
+      templateUrl: 'contact.html',
+      controller: 'MessageCtrl'
+    }).
     when('/product/:id', {
       templateUrl: 'product.html',
       controller: 'proCtrl'
@@ -45,7 +45,7 @@ var app=angular.module('pages',['ngRoute','templates'])
 
 
 .controller('MainCtrl',[function(){
-     console.log("This is the Main Controller");
+     // console.log("This is the Main Controller");
 }])
 
 
@@ -188,7 +188,7 @@ var app=angular.module('pages',['ngRoute','templates'])
 }])
 
 
-.controller('reviewCtrl',['$scope',function($scope,params){
+.controller('reviewCtrl',['$scope',function($scope){
     
    
    $scope.reviews = [];
@@ -208,6 +208,27 @@ var app=angular.module('pages',['ngRoute','templates'])
     //Reinitialize the review object
     $scope.review = {};    
   };
+}])
+
+.controller('MessageCtrl',['$scope','$http',function($scope,$http){
+
+
+    $scope.message={}
+   
+   
+    $scope.createMessage=function(message){
+
+
+      var data={message: {name: $scope.message.name, email: $scope.message.email,content: $scope.message.content}};
+      // console.log(data);
+     $http.post("/contact",data).success(function(data){
+        alert("Message sent");
+        
+     })
+     .error(function(error){
+      console.log("Couldn't send message");
+     })
+    }
 }])
 
 
