@@ -46,6 +46,7 @@ module Shocart
       port: 587,
       user_name: ENV['gmail_username'],
       password: ENV['gmail_password'],
+      domain:'cart-project.herokuapp.com',
       authentication: :plain,
       enable_starttls_auto: true
     }
