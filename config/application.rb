@@ -25,20 +25,6 @@ module Shocart
     # Do not swallow errors in after_commit/after_rollback callbacks.
      config.active_record.raise_in_transactional_callbacks = true
 
-    # config.action_mailer.delivery_method = :smtp
-    # config.action_mailer.smtp_settings = {
-    #   :port           => ENV['MAILGUN_SMTP_PORT'],
-    #   :address        => ENV['MAILGUN_SMTP_SERVER'],
-    #   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    #   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    #   :domain         => ENV['MAILGUN_SMTP_DOMAIN'],
-      
-
-    #   :address        => ENV['CLOUDMAILIN_FORWARD_ADDRESS'],
-    #   :user_name      => ENV['CLOUDMAILIN_USERNAME'],
-    #   :password       => ENV['CLOUDMAILIN_PASSWORD'],
-    #   :authentication => :plain,
-    # }
 
     config.action_mailer.delivery_method= :smtp
     config.action_mailer.smtp_settings = {
@@ -46,20 +32,9 @@ module Shocart
       port: 587,
       user_name: ENV['GMAIL_USERNAME'],
       password: ENV['GMAIL_PASSWORD'],
-      # domain:'cart-project.herokuapp.com',
       authentication: :plain,
       enable_starttls_auto: true
     }
 
-    # Once I get the mailgun:
-#     ActionMailer::Base.smtp_settings = {
-#   :port           => ENV['MAILGUN_SMTP_PORT'],
-#   :address        => ENV['MAILGUN_SMTP_SERVER'],
-#   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-#   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-#   :domain         => 'cart-project.herokuapp.com',
-#   :authentication => :plain,
-# }
-# ActionMailer::Base.delivery_method = :smtp
     end
 end

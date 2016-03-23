@@ -95,6 +95,16 @@ html, body {
   margin-left:30%;
 }
 
+
+
+ .message-text{
+  height:160px;
+ }
+
+ .email-form{
+  padding-top: 60px;
+ }
+
 input.ng-pristine.ng-untouched.ng-valid.ng-empty,
 input.ng-untouched.ng-valid.ng-not-empty.ng-dirty.ng-valid-parse,
 input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse.ng-empty,
@@ -103,28 +113,31 @@ input.ng-valid.ng-dirty.ng-valid-parse.ng-touched.ng-not-empty,
 input.ng-pristine.ng-valid.ng-empty.ng-touched,
 input.ng-not-empty.ng-dirty.ng-valid.ng-valid-email.ng-touched,
 input.ng-not-empty.ng-dirty.ng-invalid.ng-invalid-email.ng-touched,
+input.ng-valid.ng-not-empty.ng-dirty.ng-valid-parse.ng-touched,
+// input.name-email.ng-dirty.ng-touched.ng-empty.ng-valid.ng-valid-email,
+input.ng-dirty.ng-touched.ng-empty.ng-valid.ng-valid-email,
+input.ng-untouched.ng-not-empty.ng-dirty.ng-invalid.ng-invalid-email,
+input.ng-untouched.ng-not-empty.ng-dirty.ng-invalid.ng-invalid-email,
+input.ng-untouched.ng-dirty.ng-empty.ng-valid.ng-valid-email,
+input.ng-untouched.ng-dirty.ng-empty.ng-valid.ng-valid-email,
 textarea.ng-pristine.ng-valid.ng-empty.ng-valid-email.ng-touched,
 textarea.ng-pristine.ng-valid.ng-empty.ng-touched,
 textarea.ng-pristine.ng-untouched.ng-valid.ng-empty{
-
-  // color: white;
-  background-color: white;
-  border: none;
- }
-
- .message-text{
-  height:160px;
- }
-
- .email-form{
-  padding-top: 40px;
- }
- input.ng-pristine.ng-untouched.ng-valid.ng-empty,
- textarea.ng-pristine.ng-untouched.ng-valid.ng-empty {
-  width:70%;
+  // width:70%;
   font-size:15px;
   font-color:black;
+   background-color: white;
+  border: none;
 
+}
+
+.send-email{
+    width: 140px;
+    background-color: orange;
+    margin-top: 20px;
+    margin-left: 35%;
+    border: none;
+    color: white;
 }
 
  // .message-product{
