@@ -100,12 +100,32 @@ input.ng-untouched.ng-valid.ng-not-empty.ng-dirty.ng-valid-parse,
 input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse.ng-empty,
 input.ng-valid.ng-dirty.ng-valid-parse.ng-empty.ng-touched,
 input.ng-valid.ng-dirty.ng-valid-parse.ng-touched.ng-not-empty,
-input.ng-pristine.ng-valid.ng-empty.ng-touched{
+input.ng-pristine.ng-valid.ng-empty.ng-touched,
+input.ng-not-empty.ng-dirty.ng-valid.ng-valid-email.ng-touched,
+input.ng-not-empty.ng-dirty.ng-invalid.ng-invalid-email.ng-touched,
+textarea.ng-pristine.ng-valid.ng-empty.ng-valid-email.ng-touched,
+textarea.ng-pristine.ng-valid.ng-empty.ng-touched,
+textarea.ng-pristine.ng-untouched.ng-valid.ng-empty{
 
   // color: white;
   background-color: white;
-  border-bottom: none;
+  border: none;
  }
+
+ .message-text{
+  height:160px;
+ }
+
+ .email-form{
+  padding-top: 40px;
+ }
+ input.ng-pristine.ng-untouched.ng-valid.ng-empty,
+ textarea.ng-pristine.ng-untouched.ng-valid.ng-empty {
+  width:70%;
+  font-size:15px;
+  font-color:black;
+
+}
 
  // .message-product{
 

@@ -1,10 +1,10 @@
 <div class="container">
-	<div class="row" ng-controller="MessageCtrl">
+	<div class="row email-form" ng-controller="MessageCtrl">
 		<div class="col-xs-6 col-xs-offset-3">
 		<form validate class="simple-form">
-		    Name: <input type="text" ng-model="message.name" /><br />
-		    E-mail: <input type="email" ng-model="message.email" /><br />
-		    Message: <textarea type="text" ng-model="message.content" />
+		    <input  placeholder="Enter your name" ng-model="message.name" /><br />
+		   <input class="name-email" type="email" placeholder="Enter your email" ng-model="message.email" /><br />
+		     <textarea class="message-text" placeholder="Type a message" type="text" ng-model="message.content" />
 		    <input type="submit" ng-click="createMessage(message)" value="Save" />
 		 </form>
 		</div>
