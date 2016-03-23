@@ -70,11 +70,16 @@ var app=angular.module('pages',['ngRoute','templates'])
           },
           function(error){
             defered.reject(error);
-            // console.log(error);
-          }
-        );
+            
+          });
 
         return defered.promise;
+    },
+    getCartTotal : function() {
+        return $http({
+            url: '/cart.json',
+            method: 'GET'
+        })
     }
   }
 }])
@@ -88,6 +93,7 @@ var app=angular.module('pages',['ngRoute','templates'])
     getDetails();
 
     function getDetails(){
+      
       ProductService.getProductDetails(product.id).then(
         function(response){
           $scope.specificProd = response.data;
@@ -100,20 +106,46 @@ var app=angular.module('pages',['ngRoute','templates'])
      
 }])
 
-.controller('product_list_controller',['$scope','ProductService', function ($scope,ProductService)  {
+.controller('product_list_controller',['$scope','ProductService','$http','$timeout', function ($scope,ProductService,$http,$timeout)  {
       
       $scope.clickEvent = clickEvent;
       function clickEvent(id){
         $scope.myid=id;
       }
 
-
       ProductService.getProducts().success(function(data){
         $scope.products=data;
       });
 
-      // this.filteredArray = filterFilter(this.array, 'a');
+       var addProduct=function(productId) {
+       
+        return $http({
+            url: `/cart/${productId}/add`,
+            method: 'GET'
+        })
+       }
+        
+     //   $scope.display = function(id) {
+     //    $scope.totalItem=0;
+     //    addProduct(id);
+     //    ProductService.getCartTotal().success(function(data){
+     //      console.log("cart",data);
+     //      Object.keys(data).forEach(function(key) { 
+     //        $scope.totalItem+=data[key];
+     //    })
+     //      console.log($scope.totalItem);
+     //  })
+         
+     //          // console.log("Total",$scope.totalItem);
       
+     //  $scope.alertDisplayed = true;
+     //  $timeout(function() {
+     //    $scope.alertDisplayed = false;
+     //  }, 4000)
+     // };
+    
+      // $scope.alertDisplayed = false;
+
 }])
 
 
@@ -123,8 +155,7 @@ var app=angular.module('pages',['ngRoute','templates'])
     $scope.total=0;
     $scope.totalPrice=0;
     $scope.count=0;
-    // var productId=$routeParams;
-    // console.log("id",productId);
+   
     ProductService.getProducts().success(function(data){
         var productCart=data;
          $http.get('/cart.json')
@@ -134,7 +165,7 @@ var app=angular.module('pages',['ngRoute','templates'])
                  $scope.message="Your cart is currently empty";
             }
             else {
-              console.log("this cart",carts);
+              // console.log("this cart",carts);
                 for ( var key in carts) {
 
                   productCart.forEach(function(product){
@@ -142,11 +173,11 @@ var app=angular.module('pages',['ngRoute','templates'])
                       $scope.totalPrice+=product.price * carts[key]
                       var count=carts[product.id];
                        $scope.productsArray.push({id:product.id,title:product.title,image:product.image,price:product.price,amount:count});
-                      console.log("count",$scope.count);
+                      // console.log("count",$scope.count);
                     }
                    
                   });
-                  console.log("tax",$scope.totalTax);
+                  // console.log("tax",$scope.totalTax);
                   $scope.total=$scope.total+carts[key];
                   // console.log("array of products",$scope.productsArray);
                 }
@@ -154,7 +185,32 @@ var app=angular.module('pages',['ngRoute','templates'])
          
         });
       });
-}]);
+}])
+
+
+.controller('reviewCtrl',['$scope',function($scope,params){
+    
+   
+   $scope.reviews = [];
+  
+  //Set the models inside an object
+  $scope.review = {};
+  
+  $scope.addReview = function () {
+    
+    $scope.reviews.push({
+      name: $scope.review.username,
+      email: $scope.review.email,
+      star: $scope.review.star,
+      message: $scope.review.message
+    });
+    
+    //Reinitialize the review object
+    $scope.review = {};    
+  };
+}])
+
+
 
 
 

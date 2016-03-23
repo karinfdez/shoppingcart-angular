@@ -1,35 +1,79 @@
-<div class="container">
-	<div class="row" ng-controller='proCtrl'>
-		<div class="col-xs-6 col-xs-offset-3">
-			<p>{{specificProd.title}}</p>
-			<p>Product Description: {{specificProd.description}}</p>
-			<p>Price:  {{specificProd.price | currency}}</p>
-			<p>{{specificProd.image}}</p>
+
+	<div class="container">
+		<div class="row" ng-controller='proCtrl'>
+			<div class="col-xs-6 col-xs-offset-3">
+				<p>{{specificProd.title}}</p>
+				<p>Product Description: {{specificProd.description}}</p>
+				<p>Price:  {{specificProd.price | currency}}</p>
+				<p>{{specificProd.image}}</p>
+			</div>
+		  </div>
+
+	  <div ng-controller="reviewCtrl">
+		  <div class="alert alert-danger" ng-if="reviews.length == 0">
+	          No reviews yet, be the first to review this Product!.
+	        </div>
+	      <div class="row">
+			  <div class="col-sm-12" ng-repeat="review in reviews">
+		          <!-- <blockquote class="row"> -->
+		            <h3>{{review.name}}</h3> <h3>{{review.star}}</h3><br>
+		            <h5><small><i>{{review.email}}</i></small></h5>
+		            <p>{{review.message}}</p>
+		          <!-- </blockquote> -->
+	        </div>
+	       </div>
+	       	<div class=row>
+	       		<div class="form col-sm-12">
+			        <form class="form-inline form-group">
+			          <div class="input-group">
+			          	<legend>Add a review</legend><br>
+			            <label>Name</label><br>
+			            <input class="form-control" type="text" ng-model="review.username" /><br>
+			            <label>E-mail</label><br>
+			            <input class="form-control" type="email" ng-model="review.email" /><br>
+
+			            <label>Star</label>
+			            <select class="form-control" ng-model="review.star">
+			              <option name="oneStar" value="1 star">1 Star</option>
+			              <option name="twoStar" value="2 star">2 Star</option>
+			              <option name="threeStar" value="3 star">3 Star</option>
+			              <option name="fourStar" value="4 star">4 Star</option>
+			              <option name="fiveStar" value="5 star">5 Star</option>
+			            </select>
+			          </div>
+			        </form>
+			        <textarea class="text-area" rows="5" ng-model="review.message"></textarea>
+			        <br>
+			        <input type="submit" class="btn btn-block" ng-click="addReview()" value="Submit review"/>
+			    </div>
+
 		</div>
 	</div>
-</div>
+
+	 <!--  <div class='row' ng-controller="reviewCtrl">
+		 
+			<div class="col-sm-12" ng-repeat="review in reviews">
+	          <blockquote class="row">
+	            <h3 class="col-sm-6">{{review.name}}</h3>
+	            <h3 class="col-sm-6">{{review.text}}</h3>
+	          </blockquote>
+	        </div>
+	  </div>
 
 
-<!-- <p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+		<form class="form-review" role="form" ng-controller="reviewCtrl">
+		<legend class="review-title">Add a review:</legend>
+		  <div class="form-group">
+		    <label for="email">Name:</label>
+		    <input type="text" class="form-control" id="name" ng-model="review.userName">
+		  </div>
+		   <label for="email">Review:</label>
+		   <textarea class="form-group" id="review" ng-model="review.userReview">
+	            
+	        </textarea>
+		  <button type="submit" class="btn btn-default" ng-click="addReview()">Submit</button>
+		</form> -->
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+	
 
-<p>
-  <strong>Image:</strong>
-  <%= @product.image %>
-</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p> -->
-
-<!-- <%= link_to 'Edit', edit_product_path(@product) %> |
-<%#= link_to 'Back', products_path %>
-<a href="/#/products">Back</a> -->

@@ -11,8 +11,8 @@ class CartController < ApplicationController
 
   def add
   	# Getting product id
-  	id=params[:id]
-
+  	id=(params[:id])
+  
   	if session[:cart] then 
   		# Calls the existing cart
   		cart=session[:cart]
@@ -26,8 +26,11 @@ class CartController < ApplicationController
   		cart[id]+=1
   	else
   		cart[id]=1
+       
     end
-    	redirect_to '#shopping'
+
+    # render json: @cart
+    redirect_to '#products'
   end
 
   def create
