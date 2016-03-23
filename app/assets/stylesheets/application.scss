@@ -25,6 +25,13 @@ html, body {
     margin-left: 10%;
 }
 
+.cart-icon img {
+    width: 23px;
+    height: 21px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+}
+
 
 .notice,.alert{
   text-align:center;
@@ -137,18 +144,21 @@ input.ng-pristine.ng-valid.ng-empty.ng-touched{
   padding-bottom: 15px;
 }
 
-.cart-icon img{
-  width:30px;
-  
-}
+
 .text-presentation{
   
   font-size: 18px;
   margin-left: 8%;
   text-align: center;
-  width:75%;
+  width:70%;
   padding-bottom: 10px;
   padding-top: 5px;
+}
+
+.logo-bulb{
+  padding-left: 180px;
+  // width:40px;
+  // height:40px;
 }
 
 textarea.text-area.ng-pristine.ng-untouched.ng-valid.ng-empty{
@@ -158,6 +168,10 @@ textarea.text-area.ng-pristine.ng-untouched.ng-valid.ng-empty{
 
 .input-group,.text-area{
   width:70%;
+}
+
+.all-content{
+  margin-top: -110px;
 }
 
 

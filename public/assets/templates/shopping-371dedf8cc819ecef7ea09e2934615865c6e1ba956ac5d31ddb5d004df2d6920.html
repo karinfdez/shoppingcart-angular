@@ -1,0 +1,65 @@
+
+	<div class="row">
+	<div class="container">
+		<h2>Shopping Cart</h2>
+		
+		<a href="/#/products">Add products to cart</a>
+			
+			<div ng-hide="productsArray==='undefined' || productsArray==='null' || productsArray.length===0">	
+				<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="cart/destroy">
+				Empty Cart</a>	
+			</div>
+			<table ng-hide="productsArray==='undefined' || productsArray==='null' || productsArray.length===0">
+			  <thead>
+			    <tr>
+			      <th>Product</th>
+			      <th>Amount</th>
+			      <th>Price</th>
+			      <th>Image</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr ng-show="productsArray!='undefined' && productsArray!='null' && productsArray.length!=0" ng-repeat="product in productsArray">
+		  			<td>{{product.title}}</td>
+		  			<td><a href="/cart/{{product.id}}/remove"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>{{product.amount}}  <a href="/cart/{{product.id}}/add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
+		  			<td>{{product.price| currency}}</td>
+		  			<td>{{product.image}}</td>
+		  		</tr>	
+			
+			</tbody>
+		  </table>
+	    </div>	
+		<div ng-hide="productsArray==='undefined' || productsArray==='null' || productsArray.length===0">
+	        <p>Total QTY: {{total}}</p>
+	        <p>Order Value: {{totalPrice | currency}}</p>
+	   
+		
+			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+	        <input type="hidden" name="cmd" value="_xclick">
+	        <input type="hidden" name="business" value="karinfpe-store@yahoo.es">
+	        <input type="hidden" name="lc" value="CA">
+	        <input type="hidden" name="item_name" value="List of Items">
+	        <!-- <input type="hidden" name="item_number" value="item_number"> -->
+	        <input type="hidden" name="amount" value="{{totalPrice| currency}}">
+	     
+	        <input type="hidden" name="button_subtype" value="services">
+	        <input type="hidden" name="no_note" value="0">
+	        <!-- Calculate the tax rate in percent-->
+	        <input type="hidden" name="tax_rate" value="14">
+	        <input type="hidden" name="shipping" value="7.50">
+	        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+			 <input type="image" src="http://www.paypalobjects.com/webstatic/en_US/btn/btn_buynow_107x26.png" name="submit" alt="Buy Now">
+	        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	    </form>
+
+	  </div>
+		<div ng-show="productsArray.length===0">
+			 <p>{{message}}</p>
+
+		</div>
+
+
+		
+	<!-- <p>Total amount: <%=number_to_currency(total, :unit=>'$')%></p> -->
+		
+	</div>
