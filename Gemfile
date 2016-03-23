@@ -47,6 +47,8 @@ gem 'materialize-sass'
 # To use on heroku
 gem 'rails_12factor',group: :production
 
+# To avoid the CSRF authenticity token error
+  gem 'angular_csrf',group: :production
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -61,7 +63,6 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-# To avoid the CSRF authenticity token error
-  gem 'angular_csrf'
+
 end
 
