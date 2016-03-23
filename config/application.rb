@@ -44,9 +44,9 @@ module Shocart
     config.action_mailer.smtp_settings = {
       address: "smtp.gmail.com",
       port: 587,
-      user_name: ENV['gmail_username'],
-      password: ENV['gmail_password'],
-      domain:'cart-project.herokuapp.com',
+      user_name: ENV['GMAIL_USERNAME'],
+      password: ENV['GMAIL_PASSWORD'],
+      # domain:'cart-project.herokuapp.com',
       authentication: :plain,
       enable_starttls_auto: true
     }
