@@ -10,10 +10,13 @@ class MessagesController < ApplicationController
 
     if @message.valid?
       MessageMailer.new_message(@message).deliver_now
-      redirect_to '#home', notice: "Your messages has been sent."
+
+      # redirect_to '#home', 
+      flash[:notice] "Your messages has been sent."
     else
       flash[:alert] = "An error occurred while delivering this message."
-      render :new
+
+      # render :new
     end
   end
 
