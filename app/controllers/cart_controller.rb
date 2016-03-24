@@ -29,8 +29,8 @@ class CartController < ApplicationController
        
     end
 
-    # render json: @cart
-    redirect_to '#products'
+     render json: @cart
+    # redirect_to '#products'
   end
 
   def create
