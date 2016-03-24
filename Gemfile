@@ -43,6 +43,10 @@ gem 'autoprefixer-rails'
 #Add materialize to the project:
 gem 'materialize-sass'
 
+# The CORS spec allows web applications to make cross domain AJAX calls without using workarounds
+#Let's make post request from AngularJS to the Ruby on Rails app.
+# this will allow GET, POST or OPTIONS requests from any origin on any resource.
+gem 'rack-cors'
 
 # To use on heroku
 gem 'rails_12factor',group: :production
