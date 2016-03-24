@@ -213,7 +213,8 @@ var app=angular.module('pages',['ngRoute','templates'])
 .controller('MessageCtrl',['$scope','$http',function($scope,$http){
 
 
-    $scope.message={}
+    $scope.message={};
+    var resetMessage={};
    
    
     $scope.createMessage=function(message){
@@ -222,8 +223,8 @@ var app=angular.module('pages',['ngRoute','templates'])
       var data={message: {name: $scope.message.name, email: $scope.message.email,content: $scope.message.content}};
       // console.log(data);
      $http.post("/contact",data).success(function(data){
+        $scope.message = angular.copy(resetMessage);
         alert("Message sent");
-        
      })
      .error(function(error){
       console.log("Couldn't send message");
