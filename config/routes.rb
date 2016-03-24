@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  match '*any' => 'application#options', :via => [:options]
-  match '*path', :controller => 'application', :action => 'empty', :constraints => {:method => "OPTIONS"}
+  match '*any' => 'application#options', :via => [:get, :post]
+ 
   get 'messages/new'
 
   get 'messages/create'
