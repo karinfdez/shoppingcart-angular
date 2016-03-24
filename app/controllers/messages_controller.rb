@@ -11,8 +11,8 @@ class MessagesController < ApplicationController
 
     if @message.valid?
       MessageMailer.new_message(@message).deliver_now
-
-     redirect_to '#home'
+      render json: @message
+     # redirect_to '#home'
     else
       flash[:alert] = "An error occurred while delivering this message."
 
