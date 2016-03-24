@@ -29,7 +29,8 @@ class CartController < ApplicationController
        
     end
 
-     render json: @cart
+    @cart=session[:cart]
+    render json: @cart
     # redirect_to '#products'
   end
 
