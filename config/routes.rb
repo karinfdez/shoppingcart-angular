@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  match '*any' => 'application#options', :via => [:get, :post]
+  match '*any' => 'application#options', :via => [:options]
  
   get 'messages/new'
 
