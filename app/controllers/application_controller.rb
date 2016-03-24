@@ -6,9 +6,27 @@ class ApplicationController < ActionController::Base
  # protect_from_forgery with: :null_session
 
 before_filter :add_allow_credentials_headers
+before_filter :add_cors_headers
+before_filter {authenticate_user! unless request.method == "OPTIONS"}
 protect_from_forgery with: :exception
 
 
+def add_cors_headers
+  origin = request.headers["Origin"]
+  unless (not origin.nil?) and (origin == "http://localhost" or origin.starts_with? "http://localhost:")
+    origin = "https://your.production-site.org"
+  end
+  headers['Access-Control-Allow-Origin'] = origin
+  headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
+  allow_headers = request.headers["Access-Control-Request-Headers"]
+  if allow_headers.nil?
+    #shouldn't happen, but better be safe
+    allow_headers = 'Origin, Authorization, Accept, Content-Type'
+  end
+  headers['Access-Control-Allow-Headers'] = allow_headers
+  headers['Access-Control-Allow-Credentials'] = 'true'
+  headers['Access-Control-Max-Age'] = '1728000'
+end
 
 def add_allow_credentials_headers                                                                                                                                                                                                                                                        
   # https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#section_5                                                                                                                                                                                                      
@@ -19,8 +37,8 @@ def add_allow_credentials_headers
   response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'                                                                                                                                                                                                     
   response.headers['Access-Control-Allow-Credentials'] = 'true'     
   response.headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
-  headers['Access-Control-Request-Method'] = '*'
-  headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  response.headers['Access-Control-Request-Method'] = '*'
+  response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
                                                                                                                                                                                                                      
 end 
 
