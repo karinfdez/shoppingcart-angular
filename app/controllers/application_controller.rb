@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
  # protect_from_forgery with: :null_session
 
 before_filter :add_allow_credentials_headers
-protect_from_forgery with: :null_session
+# protect_from_forgery with: :null_session
 
 
 def add_allow_credentials_headers                                                                                                                                                                                                                                                        
